@@ -1,0 +1,34 @@
+module circular {
+    namespace "uri:sm";
+    prefix "c";
+
+    import complex-types {
+        prefix ct;
+    }
+
+    include subcircular;
+
+    ct:complex-type mc {
+	    ct:extends notexisting;
+    }
+
+    container c1 {
+        ct:complex-type mc;
+        ct:complex-type sm;
+    	ct:complex-type notexisting;
+    }
+
+    // circular dependency
+    ct:complex-type circl1 {
+    	ct:extends circl2;
+    }
+
+    ct:complex-type circl2 { 
+	    ct:extends circl3;
+    }
+
+    ct:complex-type circl3 {
+    	ct:extends circl1;
+    }
+
+}

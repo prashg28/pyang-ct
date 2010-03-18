@@ -1,0 +1,9 @@
+super-module.yang:10: error: GROUPING_ALREADY_DEFINED
+super-module.yang:13: error: COMPLEX_TYPE_ALREADY_DEFINED
+super-module.yang:17: error: COMPLEX_TYPE_NOT_FOUND
+submodule.yang:7: error: MISSING_INCLUDE
+submodule.yang:14: error: COMPLEX_TYPE_ALREADY_DEFINED
+submodule.yang:14: warning: UNUSED_COMPLEX_TYPE
+submodule.yang:24: warning: UNUSED_COMPLEX_TYPE
+subsubmodule.yang:10: error: COMPLEX_TYPE_ALREADY_DEFINED
+subsubmodule.yang:14: warning: UNUSED_COMPLEX_TYPE

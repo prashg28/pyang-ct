@@ -1,0 +1,36 @@
+module unique {
+
+   namespace "urn:org:example:xml:ct:unique";
+   prefix "u";
+
+   import complex-types {prefix "ct"; }
+
+   ct:complex-type ct1 {
+       leaf l { type int8; }
+       key l;
+   }
+
+   grouping g {
+        ct:instance i {
+            ct:instance-type ct1;
+            description "ddd";
+        }
+
+        ct:instance-list il {
+            ct:instance-type ct1;
+        }
+   }
+
+   uses g {
+       refine "i" {
+           mandatory true;           
+           description "desc";
+       }
+
+       refine "il" {
+           min-elements 1;
+           mandatory true;
+       } 
+   }
+   
+}

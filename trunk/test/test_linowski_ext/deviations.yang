@@ -1,0 +1,50 @@
+module deviations {
+
+   namespace "urn:org:example:xml:ct:deviations";
+   prefix "d";
+   import complex-types {prefix "ct"; }
+
+   ct:complex-type base {
+       container c {}
+       ct:instance i {
+           ct:instance-type base;
+       }
+   }
+   
+   deviation "/i/i/i/i/i/i/i/i" {
+       deviate add {}
+   }
+
+   ct:instance i {
+       ct:instance-type base;
+   }
+
+   deviation  "/i/c" {
+       deviate not-supported;
+   }
+
+   deviation "/i" {
+       deviate not-supported;       
+   }
+
+   ct:complex-type A {
+        ct:instance B {
+            ct:instance-type B;
+        }
+   }
+
+   ct:complex-type B {
+        ct:instance A {
+            ct:instance-type A;
+        }
+   }
+
+   ct:instance A {
+        ct:instance-type A;
+   }
+
+   deviation "/A/B/A/B" {
+        deviate add {}
+   }
+
+}

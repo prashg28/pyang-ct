@@ -1,0 +1,47 @@
+module key-instance-list {
+
+   namespace "urn:org:example:xml:ct:key-intance-list";
+   prefix "kil";
+
+   import complex-types {prefix "ct"; }
+   
+   ct:complex-type base-type {
+       leaf key-leaf {
+           type int8;
+       }
+
+       key "key-leaf";
+   }
+
+   ct:complex-type complex {
+       ct:extends base-type;
+   }
+
+   ct:instance-list il-true {
+       ct:instance-type complex;
+   }
+
+   ct:complex-type base-type1 {
+       
+   }
+
+   ct:complex-type complex2 {
+   }
+
+   ct:instance-list il2 {
+       ct:instance-type complex2;
+   }
+
+   ct:instance-list il-false {
+       ct:instance-type base-type;
+       config false;
+   }
+
+   container c {
+       config false;
+       ct:instance-list il-false {
+           ct:instance-type base-type;
+           config true;
+       }
+   }
+}

@@ -1,0 +1,13 @@
+module imported-module {
+    namespace "uri:im";
+    prefix "im";    
+
+    import complex-types {prefix "ct"; }
+      
+    ct:complex-type base-type {
+        leaf key-leaf {
+            type int8;
+        }
+        key "key-leaf";
+    } 
+}

@@ -1,0 +1,30 @@
+ module abstract {
+
+   namespace "urn:org:example:xml:ct:abstract";
+   prefix "abstract";
+
+   import complex-types {prefix "ct"; }
+
+   ct:complex-type BaseType {	
+	ct:abstract false;
+   }
+
+   ct:complex-type BaseAbstrType {
+	ct:abstract true;
+   }
+
+   ct:complex-type ComplexAbstrType {
+	ct:abstract true;
+	ct:extends BaseType;
+   }
+
+   ct:complex-type ComplexAbstrType2 {
+	ct:abstract true;
+	ct:extends abstract:ComplexAbstrType;
+   }
+
+   ct:instance node {
+       ct:instance-type BaseAbstrType;
+   }
+
+}

@@ -1,0 +1,54 @@
+module grammar-test {
+
+   namespace "urn:org:example:xml:ct:grammar-test";
+   prefix "gr";
+
+   import complex-types { prefix "ct"; }
+
+   // ct nested into a module
+   ct:complex-type ct1;
+
+   ct:instance i1 {
+   }
+
+   container c1 {
+       // ct nested into a container
+       ct:complex-type ct2;
+   }
+
+   list l1 {
+       // ct nested into a list
+       ct:complex-type ct3;
+
+       leaf leaf1 {
+           type int8;
+       }
+
+       key leaf1;
+   }
+
+   rpc rpc1 {
+       // ct nested into an rpc
+       ct:complex-type ct4;
+       input {
+           // ct nested into an input
+           ct:complex-type ct5;
+           leaf leaf2 {
+               type int8;
+           }
+       }
+
+       output {
+           // ct nested into an output
+           ct:complex-type ct6;
+           leaf leaf3 {
+               type int8;
+           }
+       }
+   }
+
+   notification n1  {
+       // ct nested into a notification
+       ct:complex-type ct6;
+   }
+}

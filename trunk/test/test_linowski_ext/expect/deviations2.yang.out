@@ -1,0 +1,3 @@
+deviations2.yang:30: error: BAD_DEVIATE_ADD
+deviations2.yang:31: error: BAD_DEVIATE_TYPE
+deviations2.yang:41: error: BAD_DEVIATE_DEL

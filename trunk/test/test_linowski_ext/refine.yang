@@ -1,0 +1,67 @@
+module unique {
+
+   namespace "urn:org:example:xml:ct:unique";
+   prefix "u";
+
+   import complex-types {prefix "ct"; }
+   
+   ct:complex-type base {
+        container base-simple {
+            leaf l {
+                type int8;
+                default 9;
+            }
+        }
+
+        choice ch1 {
+            case c1 {
+            }
+        }
+
+        ct:instance i {
+            ct:instance-type complex;
+        }
+
+        ct:instance-list il {
+            ct:instance-type complex;
+        }
+   }
+   
+   ct:complex-type complex {
+        ct:extends base;
+
+        leaf l {
+            type int8;
+            description "desc";
+        }
+
+        refine i {
+            description "d";
+            reference "r";
+        }
+
+        refine "i/l" {
+        }
+
+        refine il {
+            min-elements 5;
+            max-elements 7;
+        }
+
+        refine "u:base-simple1" {
+        }
+
+        refine "base-simple/u:l" {
+            description "desc1";
+            presence true;
+            default "str";
+        }
+        refine "base-simple/u:l" {
+        }
+
+        refine "ch1/c1" {
+            config true;
+            reference "ref";
+        }
+   }
+}

@@ -1,0 +1,7 @@
+circular.yang:12: error: COMPLEX_TYPE_NOT_FOUND
+circular.yang:16: error: COMPLEX_TYPE_ALREADY_DEFINED
+circular.yang:16: warning: UNUSED_COMPLEX_TYPE
+circular.yang:17: error: COMPLEX_TYPE_ALREADY_DEFINED
+circular.yang:17: warning: UNUSED_COMPLEX_TYPE
+circular.yang:18: warning: UNUSED_COMPLEX_TYPE
+circular.yang:22: error: CIRCULAR_DEPENDENCY

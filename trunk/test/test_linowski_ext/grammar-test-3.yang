@@ -1,0 +1,134 @@
+module grammar-test {
+
+   namespace "urn:org:example:xml:ct:grammar-test";
+   prefix "gr";
+
+   import complex-types { prefix "ct"; }
+
+   feature f1;
+
+   // no child elements
+   ct:complex-type ct1;
+
+   // error: the argument must be an identifier
+   ct:complex-type wrong!name! {}
+
+   ct:complex-type ct2 {
+       ct:abstract true;
+       anyxml data;
+       anyxml data;
+
+       choice ch1 {
+           case c1 {
+                leaf l1 {
+                    type empty;
+                }
+           }
+           case c2 {
+                leaf l2 {
+                    type empty;
+                }
+           }
+       }
+
+       choice ch1 {
+           case c1 {
+                leaf l1 {
+                    type empty;
+                }
+           }
+           case c2 {
+                leaf l2 {
+                    type empty;
+                }
+           }
+       }
+
+
+       container c1 {}
+       container c2 {}
+
+       // error: description is defined twice
+       description "";
+       description "";
+
+       ct:instance ct-inst { 
+           ct:instance-type ct2; 
+       }
+       
+/*       ct:instance-list ct2 { 
+           type ct1;
+       }*/
+
+       // error: only one nested extends statement is allowed
+       ct:extends ct1;
+       ct:extends ct1;
+
+       grouping gr1 {}
+       grouping gr2 {}
+       uses gr1;
+       uses gr2;
+
+       if-feature f1;
+       if-feature f2;
+
+       // error: only one nested key is allowed
+       key data;
+       key data;
+
+       leaf lf1 {
+           type empty;
+       }
+       leaf lf2 {
+           type empty;
+       }
+       leaf-list lfl1 {
+           type empty;
+       }
+       leaf-list lfl2 {
+           type empty;
+       }
+       
+       list ls1 {
+       }
+      
+      list ls2 {
+      }
+
+       must "";
+       must "";
+
+       // error: only one item is allowed
+       ordered-by user;
+       ordered-by system;
+
+       // error: doule reference definition
+       reference "";
+       reference "";
+
+       // error: double status definition
+       status current;
+       status current;
+
+       typedef t1 {
+           type int8;
+       }
+
+       typedef t2 {
+           type t1;
+       }
+
+       leaf t2 {
+           type t2;
+       }
+    }
+
+   ct:complex-type ct3 {
+       // error: the argument must be boolean
+       // error: only one nested abstract statement is allowed
+       ct:abstract value-must-be-boolean;
+       ct:abstract false;
+   }
+
+   feature f2;
+}

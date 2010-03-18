@@ -1,0 +1,5 @@
+key.yang:18: error: REDEFINED_KEY
+key.yang:22: error: BAD_KEY
+key.yang:28: warning: KEY_HAS_DEFAULT
+key.yang:30: error: DUPLICATE_KEY
+key.yang:37: error: BAD_TYPE_IN_KEY

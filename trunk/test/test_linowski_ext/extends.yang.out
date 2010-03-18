@@ -1,0 +1,2 @@
+extends.yang:12: error: DUPLICATE_CHILD_NAME
+extends.yang:33: error: DUPLICATE_CHILD_NAME

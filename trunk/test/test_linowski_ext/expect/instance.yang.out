@@ -1,0 +1,4 @@
+instance.yang:13: error: COMPLEX_TYPE_NOT_FOUND
+instance.yang:16: error: KEY_REQUIRED
+instance.yang:20: error: DUPLICATE_CHILD_NAME
+instance.yang:21: error: COMPLEX_TYPE_NOT_FOUND

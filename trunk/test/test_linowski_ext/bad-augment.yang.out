@@ -1,0 +1,6 @@
+bad-augment.yang:12: error: DUPLICATE_CHILD_NAME
+bad-augment.yang:14: error: NODE_NOT_FOUND
+bad-augment.yang:27: error: BAD_NODE_IN_AUGMENT
+bad-augment.yang:31: error: BAD_NODE_IN_AUGMENT
+bad-augment.yang:46: error: BAD_NODE_IN_AUGMENT
+bad-augment.yang:49: error: BAD_NODE_IN_AUGMENT

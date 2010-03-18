@@ -1,0 +1,23 @@
+ module unique1 {
+
+   namespace "urn:org:example:xml:ct:unique1";
+   prefix "u";
+
+   import complex-types {prefix "ct"; }
+
+   ct:complex-type  c1;
+
+
+   ct:instance node1 {
+       ct:instance-type c1;
+   }
+
+   leaf node1 {
+       type int8;
+   }
+
+   ct:instance-list node1 {
+       ct:instance-type c1;
+   }
+
+}

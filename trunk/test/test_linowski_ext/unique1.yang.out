@@ -1,0 +1,3 @@
+unique1.yang:15: error: DUPLICATE_CHILD_NAME
+unique1.yang:19: error: DUPLICATE_CHILD_NAME
+unique1.yang:19: error: KEY_REQUIRED

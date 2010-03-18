@@ -1,0 +1,30 @@
+submodule submodule {
+
+    belongs-to super-module {
+        prefix "sm";
+    }
+
+    include subsubmodule;
+
+    import complex-types {
+        prefix ct;
+    }
+
+    container c2 {
+        ct:complex-type newType {
+        }
+    }
+
+    container c1 {
+    	grouping test {
+	    }
+
+    	uses test;
+
+	    ct:complex-type test;
+    }
+
+    ct:complex-type newType2  {
+    }
+	
+}

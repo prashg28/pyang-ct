@@ -1,0 +1,15 @@
+module super-module2 {
+    namespace "uri:sm2";
+    prefix "sm2";
+
+    import imported-module {
+        prefix im;
+    }
+
+    import complex-types {prefix "ct"; }
+
+    ct:instance i {
+        ct:instance-type im:base-type;
+    }
+   
+}

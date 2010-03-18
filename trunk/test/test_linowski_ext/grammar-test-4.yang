@@ -1,0 +1,109 @@
+module grammar-test {
+
+   namespace "urn:org:example:xml:ct:grammar-test";
+   prefix "gr";
+
+   import complex-types { prefix "ct"; }
+
+   ct:complex-type ct1 {
+   }
+
+   extension ext1;
+
+   feature f1;
+
+   gr:ext1 {}
+
+   ct:complex-type ct2 {
+       
+       ct:abstract false {
+           gr:ext1;
+           // error: grammar error
+           ct:abstract true;
+       }
+
+       ct:extends gr:ct1 {
+           description "desc";
+           reference "ref";
+           status "current";
+
+           // errors: double definitions
+           description "desc";
+           reference "ref";
+           status "current";
+       }
+
+       ct:instance ct1 {
+           description "desc";
+           config true;
+           if-feature f1;
+           mandatory true;
+           must "";
+           reference ref;
+           status current;
+           ct:instance-type ct1;
+           when "";
+
+           // double definition
+           // error:
+           description "desc";
+           // error:
+           config true;
+           if-feature f1;
+           // error:
+           mandatory true;
+           must "";
+           // error:
+           reference ref;
+           // error:
+           status current;
+           // error:
+           type ct1;
+           // error:
+           when "";
+       }
+
+       ct:instance-list ct2 {
+           description "desc";
+           config true;
+           if-feature f1;
+           // error: mandatory is not allowed
+           mandatory true;
+           must "";
+           reference ref;
+           status current;
+           ct:instance-type ct2;
+           when "";
+           min-elements 1;
+           max-elements 2;
+
+           // double definition
+           // error:
+           description "desc";
+           // error:
+           config true;
+           if-feature f1;
+           // error:
+           mandatory true;
+           must "";
+           // error:
+           reference ref;
+           // error:
+           status current;
+           // error:
+           type ct1;
+           // error:
+           when "";
+           min-elements 1;
+           max-elements 2;
+
+          
+           
+       }
+
+
+
+   }
+
+
+}

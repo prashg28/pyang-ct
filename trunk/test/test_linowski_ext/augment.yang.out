@@ -1,0 +1,8 @@
+augment.yang:31: error: MANDATORY_AUGMENTATION
+augment.yang:36: error: MANDATORY_AUGMENTATION
+augment.yang:41: error: MANDATORY_AUGMENTATION
+augment.yang:52: error: MANDATORY_AUGMENTATION
+augment.yang:57: error: KEY_REQUIRED
+augment.yang:69: error: DUPLICATE_CHILD_NAME
+augment.yang:72: error: BAD_VALUE
+augment.yang:79: error: BAD_NODE_IN_AUGMENT

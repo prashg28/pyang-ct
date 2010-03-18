@@ -1,0 +1,18 @@
+module orderedby {
+
+   namespace "urn:org:example:xml:ct:ordered";
+   prefix "o";
+
+   import complex-types {prefix "ct"; }
+   
+   ct:complex-type base-type {
+       leaf key-leaf {
+           type int8;
+       }
+
+       key "key-leaf";
+
+       ordered-by "user";
+   }
+
+}
