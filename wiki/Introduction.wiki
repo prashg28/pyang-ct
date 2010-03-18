@@ -2,6 +2,6 @@
 
 = Introduction =
 
-By default the pyang complex type extension is disabled. In order to enable it the '--enable-complex-types' argument should be passed as a command line argument.
+By default the pyang complex type extension is disabled. In order to enable it the '--enable-complex-types' argument should be passed as a command line argument to pyang.
 
 
