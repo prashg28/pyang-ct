@@ -1,0 +1,4 @@
+submodule.yang:14: error: COMPLEX_TYPE_ALREADY_DEFINED
+submodule.yang:14: warning: UNUSED_COMPLEX_TYPE
+submodule.yang:24: warning: UNUSED_COMPLEX_TYPE
+subsubmodule.yang:14: warning: UNUSED_COMPLEX_TYPE

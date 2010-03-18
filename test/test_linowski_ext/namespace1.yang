@@ -1,0 +1,20 @@
+ module namespace1 {
+
+   namespace "urn:org:example:xml:ct:ns1";
+   prefix "ns1";
+
+   import complex-types {
+       prefix "ct"; 
+   }
+
+   ct:complex-type base {
+       leaf base-leaf {
+           type int8;
+       }
+   }
+
+   ct:instance base-inst {
+       ct:instance-type base;
+   }
+
+}

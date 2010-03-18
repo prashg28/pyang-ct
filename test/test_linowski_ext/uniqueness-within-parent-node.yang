@@ -1,0 +1,17 @@
+ module unique {
+
+   namespace "urn:org:example:xml:ct:unique";
+   prefix "unique";
+
+   import complex-types {prefix "ct"; }
+
+   ct:complex-type  t1 {
+   }
+
+   ct:complex-type t1 {
+   }
+
+   ct:complex-type t2 {
+   }
+
+} // hw module

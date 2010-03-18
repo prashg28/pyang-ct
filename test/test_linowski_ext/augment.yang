@@ -1,0 +1,87 @@
+module unique {
+
+   namespace "urn:org:example:xml:ct:unique";
+   prefix "u";
+
+   import complex-types {
+       prefix "ct"; 
+   }
+
+   ct:complex-type ct1 {
+       container c {}
+       leaf l {
+           type int8;
+       }
+       choice ch {
+           case a {
+           }
+       }
+   }
+
+   ct:complex-type ct2 {
+       leaf AAA {
+           type int8;
+       }
+   }
+
+   ct:instance c {
+       ct:instance-type ct1;
+
+       augment "c" {
+           leaf l {
+               type int8;
+               mandatory true;
+           }
+
+           leaf-list ll {
+               type int8;
+               min-elements 1;
+           }
+
+           container c1 {
+               presence "PP";
+               container c2 {
+                   presence "PP";
+                   leaf l {
+                       type int8;
+                       mandatory true;
+                   }
+               }
+           }
+
+           ct:instance ccc {
+               ct:instance-type ct1;
+               mandatory true;
+           }
+
+           ct:instance-list cccl {
+               ct:instance-type ct1;
+           }
+       }
+
+       augment "c/c" {
+           ct:instance b {
+               ct:instance-type ct2;
+           }
+       }
+
+       augment "c/c" {
+           container b { }
+       }
+
+       augment "/c" {
+       }
+
+       augment "c" {
+           container c {}
+       }
+
+       augment "l" {
+       }
+   }
+
+
+   container ac {
+   }
+
+}

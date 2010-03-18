@@ -1,0 +1,3 @@
+circular-instantiation.yang:17: error: DUPLICATE_CHILD_NAME
+circular-instantiation.yang:46: error: BAD_NODE_IN_AUGMENT
+circular-instantiation.yang:52: error: BAD_NODE_IN_AUGMENT

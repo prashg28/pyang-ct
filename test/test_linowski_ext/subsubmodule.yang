@@ -1,0 +1,17 @@
+submodule subsubmodule {
+    belongs-to super-module {
+        prefix "sm";
+    }
+
+    import complex-types {
+        prefix ct;
+    }
+
+    ct:complex-type newType {
+    }
+
+    container cc {
+        ct:complex-type newType2;
+
+    }
+}

@@ -1,0 +1,41 @@
+module key {
+
+   namespace "urn:org:example:xml:ct:key";
+   prefix "k";
+
+   import complex-types {prefix "ct"; }
+   
+   ct:complex-type base-type {
+       leaf key-leaf {
+           type int8;
+       }
+
+       key "key-leaf";
+   }
+
+   ct:complex-type  complex-type {
+        ct:extends base-type;
+        key "key-leaf";
+   }
+   
+   ct:complex-type wrong-key-ref {
+       key "wrong-key";
+   }
+
+   ct:complex-type double-key-definition {
+       leaf l1 {
+           type int8;
+           default "8";
+       }
+       key "l1 l1";
+   }
+
+   ct:complex-type empty-typed-key {
+       leaf et {
+           type empty;
+       }
+       key et;
+   }
+
+
+}

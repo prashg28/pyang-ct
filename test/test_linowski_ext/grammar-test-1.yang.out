@@ -1,0 +1,7 @@
+grammar-test-1.yang:11: error: EXPECTED_KEYWORD_2
+grammar-test-1.yang:16: warning: UNUSED_COMPLEX_TYPE
+grammar-test-1.yang:21: warning: UNUSED_COMPLEX_TYPE
+grammar-test-1.yang:32: warning: UNUSED_COMPLEX_TYPE
+grammar-test-1.yang:35: warning: UNUSED_COMPLEX_TYPE
+grammar-test-1.yang:43: warning: UNUSED_COMPLEX_TYPE
+grammar-test-1.yang:52: warning: UNUSED_COMPLEX_TYPE

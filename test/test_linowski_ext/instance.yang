@@ -1,0 +1,23 @@
+ module instance {
+
+   namespace "urn:org:example:xml:ct:instance";
+   prefix "instance";
+
+   import complex-types {prefix "ct"; }
+
+   ct:complex-type BaseType {	
+      ct:abstract true;
+   }
+
+   ct:instance node2 {
+       ct:instance-type BaseType2;
+   }
+
+   ct:instance-list node1 {
+       ct:instance-type instance:BaseType;
+   }
+
+   ct:instance-list node2 {
+       ct:instance-type NonExisting;
+   }
+}

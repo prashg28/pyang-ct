@@ -1,0 +1,40 @@
+module unique {
+
+   namespace "urn:org:example:xml:ct:unique";
+   prefix "u";
+
+   import complex-types {prefix "ct"; }
+   
+   ct:complex-type base-simple {
+        container base-simple {
+        }
+
+        container base-simple {
+        }
+   }
+   
+   ct:complex-type simple {
+        ct:instance base-simple {
+            ct:instance-type base-simple;
+        }
+   }
+
+   ct:complex-type  base-type {
+        container c1 {
+        }
+        
+        ct:instance simple-child {
+            ct:instance-type  simple;
+        }
+   }
+
+
+   ct:complex-type  complex-type {
+        ct:extends base-type;
+
+        container simple-child {
+        }
+   }
+
+
+}

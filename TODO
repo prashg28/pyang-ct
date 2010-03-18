@@ -1,0 +1,12 @@
+  o  add validation of XPath (lower prio) (when, must)
+
+  o  add more stuff to XSD output:
+     o  use substitutiongroup for augment
+
+  o  add validation of instance-identifier defaults
+
+  o  better handling of multiple input files
+  
+  o  move all plugin API functions to plugin.py
+
+  o  give a warning if the default case does not have any default leafs=======

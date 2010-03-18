@@ -1,0 +1,127 @@
+#!/bin/bash
+
+# Defaults for arguments
+schema=rng
+target=get-reply
+dir=input
+name="_NO_NAME_"
+
+xslt_dir=${PYANG_XSLT_DIR:-/usr/local/share/yang/xslt}
+rng_lib=${PYANG_RNG_LIBDIR:-/usr/local/share/yang/schema}/relaxng-lib.rng
+
+usage() {
+    cat <<EOF
+
+Usage: yang2dsdl <options> <filename> ...
+
+Generates DSDL schemas from YANG module in <filename>.
+
+Options:
+  -h           Show this help message and exit.
+  -s <schema>  Select the schema to generate (default "rng").
+               Must be one of "rng", "sch" and "dsrl".
+  -t <target>  Specify the validation target (default "get-reply").
+               Must be one of "dstore", "get-reply", "getconf-reply",
+               "rpc" and "notif". Option -n <name> is required
+               for the latter two.
+  -n <name>    Specify the name of notification or RPC method.
+               The name has to include the standard prefix of
+               the module where the method/notification is defined.
+  -i|-o        Specify RPC request (-i) or reply (-o) (default -i).
+EOF
+}
+
+gen_schema() {
+    pyang -f cts --cts-no-documentation --cts-no-dublin-core $yam | \
+	xsltproc $XSLT_OPTS $extra_pars \
+	--stringparam target $target --stringparam name $name \
+	--stringparam dir $dir $xslt_dir/$stylesheet -
+}
+
+gen_relaxng() {
+    stylesheet="gen-relaxng.xsl"
+    extra_pars="--stringparam rng-lib $rng_lib"
+    gen_schema
+}
+
+gen_schematron() {
+    stylesheet="gen-schematron.xsl"
+    extrapars=""
+    gen_schema
+}
+
+gen_dsrl() {
+    stylesheet="gen-dsrl.xsl"
+    extrapars=""
+    gen_schema
+}
+
+while getopts ":hs:t:n:io" opt ; do
+    case $opt in
+	h)
+	    usage
+	    exit 0
+	    ;;
+	s)
+	    schema=$OPTARG
+	    ;;
+	t)
+	    target=$OPTARG
+	    if [[ $target != "dstore" && $target != "get-reply" \
+		&& $target != "rpc" \
+		&& $target != "getconf-reply" && $target != "notif" ]]
+	    then
+		echo "Invalid argument for -t: $target."
+		exit 1
+	    fi
+	    ;;
+	n)
+	    name=$OPTARG
+	    ;;
+	i)
+	    dir=input
+	    ;;
+	o)
+	    dir=output
+	    ;;
+	\?)
+	    echo "Invalid option: -$OPTARG." >&2
+	    exit 1
+	    ;;
+	:)
+	    echo "Option -$OPTARG requires an argument."
+	    ;;
+    esac
+done
+shift $(($OPTIND-1))
+yam=$*
+if [[ ($target == "rpc" || $target == "notif") && $name == "_NO_NAME_" ]]
+then
+    echo "Requires $target name (option -n)." >&2
+    exit 1
+fi
+if [[ $yam == "" ]] ; then
+    echo "No input file given." >&2
+    usage
+    exit 1
+fi
+if [ ! -f $yam ] ; then
+    echo "File '$yam' not found."
+    exit 1
+fi
+
+case $schema in
+    rng)
+	gen_relaxng
+	;;
+    sch)
+	gen_schematron
+	;;
+    dsrl)
+	gen_dsrl
+	;;
+    *)
+	echo "Invalid argument for -s: $schema."
+	exit 1
+	;;
+esac

@@ -1,0 +1,15 @@
+grammar-test-3.yang:14: error: BAD_VALUE
+grammar-test-3.yang:17: error: ABSTRACT_NOT_ALLOWED
+grammar-test-3.yang:19: error: DUPLICATE_CHILD_NAME
+grammar-test-3.yang:34: error: DUPLICATE_CHILD_NAME
+grammar-test-3.yang:36: error: DUPLICATE_CHILD_NAME
+grammar-test-3.yang:41: error: DUPLICATE_CHILD_NAME
+grammar-test-3.yang:53: error: UNEXPECTED_KEYWORD
+grammar-test-3.yang:65: error: UNEXPECTED_KEYWORD
+grammar-test-3.yang:76: error: BAD_KEY
+grammar-test-3.yang:77: error: UNEXPECTED_KEYWORD
+grammar-test-3.yang:103: error: UNEXPECTED_KEYWORD
+grammar-test-3.yang:107: error: UNEXPECTED_KEYWORD
+grammar-test-3.yang:111: error: UNEXPECTED_KEYWORD
+grammar-test-3.yang:129: error: BAD_VALUE
+grammar-test-3.yang:130: error: UNEXPECTED_KEYWORD

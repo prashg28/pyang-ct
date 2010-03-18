@@ -1,0 +1,11 @@
+submodule grammar-test {
+
+   belongs-to grammar-test-super {
+       prefix "gts";
+   }
+   
+   import complex-types { prefix "ct"; }
+
+   // ct nested into a submodule
+   ct:complex-type ct1;
+}

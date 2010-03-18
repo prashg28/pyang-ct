@@ -1,0 +1,14 @@
+submodule subcircular {
+
+    belongs-to circular {
+        prefix "sc";
+    }
+
+
+    import complex-types {
+        prefix ct;
+    }
+
+    ct:complex-type sm {
+    }
+}

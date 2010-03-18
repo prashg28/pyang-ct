@@ -1,0 +1,23 @@
+module super-module {
+    namespace "uri:sm";
+    prefix "sm";
+    include submodule;
+
+    import complex-types {
+    	prefix ct;
+    }
+
+    grouping test {
+    }
+
+    ct:complex-type test {
+    }
+
+    ct:instance newNode3 {
+        ct:instance-type "sm:newType3";
+    }
+
+    ct:instance newNode2 {
+        ct:instance-type "sm:newType2";
+    }
+}

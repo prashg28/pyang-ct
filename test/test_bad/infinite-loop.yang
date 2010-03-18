@@ -1,0 +1,10 @@
+module inifinite-loop {
+  namespace "urn:test";
+  prefix "infinite";
+  
+  grouping target {
+    container c;
+    uses target; // error: cyclic grouping!
+  }
+
+}

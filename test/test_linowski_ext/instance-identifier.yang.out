@@ -1,0 +1,3 @@
+instance-identifier.yang:23: error: INSTANCE_IDENTIFIER_REQUIRED
+instance-identifier.yang:23: error: COMPLEX_TYPE_NOT_FOUND
+instance-identifier.yang:30: error: COMPLEX_TYPE_NOT_FOUND

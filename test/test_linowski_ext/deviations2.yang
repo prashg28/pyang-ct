@@ -1,0 +1,53 @@
+module deviations {
+
+   namespace "urn:org:example:xml:ct:deviations";
+   prefix "d";
+   import complex-types {prefix "ct"; }
+   
+   ct:complex-type base {
+        container base-simple {
+            leaf l {
+                type int8;
+            }
+        }
+   }
+
+   ct:instance base {
+       ct:instance-type base;
+   }
+
+   ct:instance base1 {
+       ct:instance-type base;
+       config true;
+   }
+
+   deviation "/base" {
+       deviate not-supported;
+   }
+
+   deviation "/base1" {
+       deviate add {
+           config true;
+           default 8;
+           must "";
+           must "";
+       }
+   }
+
+   deviation "/base1" {
+       deviate replace {
+           config false;
+           must "";
+           mandatory true;
+       }
+   }
+
+   deviation "/base1" {
+       deviate delete {
+           must "";
+           config false;
+       }
+   }
+
+
+}
