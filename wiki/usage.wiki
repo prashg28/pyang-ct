@@ -2,4 +2,6 @@
 
 = How to use =
 
+The implementation of the complex type extension to pyang is a python module available at $PYANG-CT_ROOT/pyang/plugins/complex-types.py. The test cases for the extension can be found in $PYANG-CT_ROOT/test/test_linowski_ext.
+
 By default the pyang complex type extension is disabled. In order to enable it the '--enable-complex-types' argument should be passed as a command line argument to pyang.
