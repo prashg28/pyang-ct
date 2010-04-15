@@ -994,7 +994,6 @@ module ipfix-psamp {
     reference "draft-ietf-ipfix-mib-05, section 7
       (ipfixTemplateEntry, ipfixTemplateDefinitionEntry,
       ipfixTemplateStatsEntry)";
-    config false;
     leaf observationDomainId { type uint32; }
     leaf templateId { type uint16; }
     leaf setId { type uint16; }
@@ -1016,7 +1015,6 @@ module ipfix-psamp {
       objects in IPFIX-MIB";
     reference "draft-ietf-ipfix-mib-05, section 7
       (ipfixTransportSessionEntry, ipfixTransportSessionStatsEntry)";
-    config false;
     leaf index { type int32; }
     leaf sourceAddress { type inet:ip-address; }
     leaf destinationAddress { type inet:ip-address; }
