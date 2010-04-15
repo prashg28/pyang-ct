@@ -1,13 +1,11 @@
-ipfix-psamp.yang:1107 (at ipfix-psamp.yang:399): error: NEED_KEY_USES
-ipfix-psamp.yang:1107 (at ipfix-psamp.yang:399): error: KEY_REQUIRED
-ipfix-psamp.yang:1107 (at ipfix-psamp.yang:402): error: KEY_REQUIRED
+ipfix-psamp.yang:1105 (at ipfix-psamp.yang:399): error: NEED_KEY_USES
+ipfix-psamp.yang:1105 (at ipfix-psamp.yang:399): error: KEY_REQUIRED
+ipfix-psamp.yang:1105 (at ipfix-psamp.yang:402): error: KEY_REQUIRED
 ipfix-psamp.yang:442: error: COMPLEX_TYPE_NOT_FOUND
 ipfix-psamp.yang:461: error: COMPLEX_TYPE_NOT_FOUND
 ipfix-psamp.yang:740: error: COMPLEX_TYPE_NOT_FOUND
 ipfix-psamp.yang:795: error: LEAFREF_IDENTIFIER_BAD_NODE
 ipfix-psamp.yang:952: error: XPATH_SYNTAX_ERROR
-ipfix-psamp.yang:997: error: UNEXPECTED_KEYWORD
-ipfix-psamp.yang:1019: error: UNEXPECTED_KEYWORD
-ipfix-psamp.yang:1127 (at ipfix-psamp.yang:1097): error: NEED_KEY_USES
-ipfix-psamp.yang:1127 (at ipfix-psamp.yang:1097): error: KEY_REQUIRED
-ipfix-psamp.yang:1127 (at ipfix-psamp.yang:1100): error: KEY_REQUIRED
+ipfix-psamp.yang:1125 (at ipfix-psamp.yang:1095): error: NEED_KEY_USES
+ipfix-psamp.yang:1125 (at ipfix-psamp.yang:1095): error: KEY_REQUIRED
+ipfix-psamp.yang:1125 (at ipfix-psamp.yang:1098): error: KEY_REQUIRED

@@ -160,7 +160,7 @@ def pyang_plugin_init():
 
     statements.add_validation_fun('pre_reference_2',
                                   ['deviation'],
-                                  v_reference_deviation_recursion)
+                                  v_reference_load_recursive_nodes)
 
     statements.add_validation_fun('reference_1',
                                   [(ct_module_name, str_complex_type)],
@@ -514,7 +514,7 @@ def v_instantiate_extends(ctx, stmt):
                     target.substmts.remove(old)
                 target.substmts.append(s)
 
-def find_target_node(ctx, stmt):
+def find_target_node(ctx, stmt, is_instance_allowed = False):
     """Find the target node for the 'refine' or 'augment' statements"""
     parent = stmt.parent
     if stmt.arg == '.':
@@ -525,7 +525,7 @@ def find_target_node(ctx, stmt):
     node = parent
     # go down the path
     for (prefix, identifier) in path:
-        if node is not parent and is_instation(node):
+        if not is_instance_allowed and node is not parent and is_instation(node):
             err_add(ctx.errors, stmt.pos, 'BAD_REF_AUG', (node.arg, node.pos))
             return None
 
@@ -649,6 +649,7 @@ def expand_augmentations(ctx, stmt):
     agms = stmt.search('augment')
     # parse the argument of augmentations
     stmts = []
+
     for a in agms:
         if a.arg.startswith("/"):
             err_add(ctx.errors, a.pos, 'BAD_VALUE',
@@ -671,7 +672,8 @@ def expand_augmentations(ctx, stmt):
     stmts.sort(cmp_len)
 
     for a in stmts:
-        target = find_target_node(ctx, a)
+        v_reference_load_recursive_nodes(ctx, a)
+        target = find_target_node(ctx, a, True)
         a.i_target_node = target
 
         if target is None:
@@ -690,7 +692,7 @@ def expand_augmentations(ctx, stmt):
 
         # copy the augmentation definitions into target.i_children
         for c in a.i_children:
-            if is_mandatory(c):
+            if is_mandatory(c) and stmt.i_module.i_modulename != target.i_module.i_modulename:
                 err_add(ctx.errors, c.pos, 'MANDATORY_AUGMENTATION',
                     (c.arg, c.pos))
                 continue
@@ -849,10 +851,16 @@ def v_reference_instance_list(ctx, stmt):
         err_add(ctx.errors, stmt.pos, 'KEY_REQUIRED',
             (stmt.i_complex_type.arg, stmt.pos))
 
-def v_reference_deviation_recursion(ctx, stmt):
+def v_reference_load_recursive_nodes(ctx, stmt):
     """Expands recursive data structures"""
+    if stmt.arg.startswith("/"):
+        is_absolute = True
+        arg = stmt.arg
+    else:
+        is_absolute = False
+        arg = "/" + stmt.arg
     path = [(m[1], m[2]) \
-                for m in syntax.re_schema_node_id_part.findall(stmt.arg)]
+                for m in syntax.re_schema_node_id_part.findall(arg)]
 
     (prefix, identifier) = path[0]
     module = module_by_prefix(stmt.i_module, prefix)
@@ -860,17 +868,22 @@ def v_reference_deviation_recursion(ctx, stmt):
         return None
 
     # find the first node
-    node = statements.search_child(module.i_children,
-            module.i_modulename, identifier)
-    if node is None:
-        # check all our submodules
-        for inc in module.search('include'):
-            submod = ctx.get_module(inc.arg)
-            if submod is not None:
-                node = statements.search_child(submod.i_children,
-                            submod.i_modulename, identifier)
-                if node is not None:
-                    break
+    if (is_absolute):
+        node = statements.search_child(module.i_children,
+                module.i_modulename, identifier)
+        if node is None:
+            # check all our submodules
+            for inc in module.search('include'):
+                submod = ctx.get_module(inc.arg)
+                if submod is not None:
+                    node = statements.search_child(submod.i_children,
+                                submod.i_modulename, identifier)
+                    if node is not None:
+                        break
+            if node is None:
+                return
+    else:
+        node = statements.search_child(stmt.parent.i_children, module.i_modulename, identifier)
         if node is None:
             return
 
@@ -954,7 +967,8 @@ complex_types_stmts = [
            ('augment', '*'),
            ('container', '*'), ('leaf', '*'), ('leaf-list', '*'),
            ('list', '*'), ('uses', '*'), ('anyxml', '*'), ('choice', '*'),
-           ((ct_module_name, str_instance_type), '1')
+           ((ct_module_name, str_instance_type), '1'),
+           ((ct_module_name, str_instance), '*'), ((ct_module_name, str_instance_list), '*'),
      ]),
      [ 'module',  'submodule', 'grouping', 'container', 'list', 'case',
      'notification', 'input', 'output', 'augment', 'choice', 'case']
@@ -968,10 +982,11 @@ complex_types_stmts = [
            ('when', '?'), ('augment', '*'), ('container', '*'),
            ('leaf', '*'), ('leaf-list', '*'), ('list', '*'), ('uses', '*'),
            ('anyxml', '*'), ('choice', '*'),
-           ((ct_module_name, str_instance_type), '1')
+           ((ct_module_name, str_instance_type), '1'),
+           ((ct_module_name, str_instance), '*'), ((ct_module_name, str_instance_list), '*'),
      ]),
      [ 'module',  'submodule', 'grouping', 'container', 'list', 'case',
-     'notification', 'input', 'output', 'augment', 'choice', 'case']
+     'notification', 'input', 'output', 'augment', 'choice']
      ),
 
     (str_instance_type, '?',
