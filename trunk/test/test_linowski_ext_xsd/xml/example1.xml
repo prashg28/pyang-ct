@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<i  xsi:type="ct1" 
+    xmlns="urn:ex1" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ct="urn:ietf:params:xml:ns:yang:complex-types">
+    <ct:type>ct1</ct:type>
+</i>

@@ -1,0 +1,16 @@
+module example1 {
+    namespace "urn:ex1";
+    prefix ex1;
+
+    import complex-types {
+        prefix ct;
+    }
+
+    ct:complex-type ct1 {
+    }
+
+    ct:instance i {
+        ct:instance-type ct1;
+    }
+}
+
