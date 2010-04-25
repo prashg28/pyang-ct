@@ -1,0 +1,37 @@
+module example1 {
+    namespace "urn:ex1";
+    prefix ex1;
+
+    import complex-types {
+        prefix ct;
+    }
+
+    ct:complex-type base-ct {
+        ct:abstract true;
+        leaf lbase {
+            type string;
+            mandatory true;
+        }
+        key lbase;
+    }
+
+    ct:complex-type derived-ct {
+        ct:extends base-ct;
+        leaf l {
+            mandatory true;
+            type int8;
+        }
+    }
+
+    ct:instance i {
+        ct:instance-type base-ct;
+    }
+
+    container c {
+       ct:instance-list i {
+            ct:instance-type base-ct;
+       }  
+    }
+
+}
+

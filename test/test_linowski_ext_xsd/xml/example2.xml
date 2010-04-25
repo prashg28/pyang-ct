@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<c  xmlns="urn:ex1" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ct="urn:ietf:params:xml:ns:yang:complex-types"
+    xmlns:o="urn:ietf:params:xml:ns:yang:other">
+    <i xsi:type="derived-ct">
+       <ct:type>base-ct</ct:type>
+       <lbase>2</lbase>
+       <ct:type>derived-ct</ct:type>
+       <l>1</l>  
+       <o:el1>test other namespace</o:el1>
+    </i>    
+    <el2>34</el2>
+</c>

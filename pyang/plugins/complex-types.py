@@ -430,6 +430,7 @@ def v_instantiate_extends(ctx, stmt):
                       nocopy=['type','uses','unique','typedef','grouping'],
                       copyf=post_copy_fnc(extends, True))       
             stmt.i_children.append(newnode)
+            newnode.i_is_inherited = True
             names[(ch.i_module.i_modulename, ch.arg)] = True
     stmt.i_base_type_expanded = True
 
