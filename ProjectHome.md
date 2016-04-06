@@ -1,0 +1,5 @@
+YANG is a Data Modeling Language for NETCONF (RFC4731), developed by the IETF NETMOD WG. It supports modeling of a tree of data elements that represent the configuration and runtime   status of a particular network element managed via NETCONF. The Internet Draft "Extending YANG with Language Abstractions - draft-linowski-netmod-yang-abstract-02" suggests to enhance YANG with supplementary modeling features and language abstractions with the aim to improve the model extensibility and reuse.
+
+pyang is a YANG validator, transformator and code generator, written in python. It can be used to validate YANG modules for correctness, to transform YANG modules into other formats, and to generate code from the modules. pyang project is available at http://code.google.com/p/pyang/.
+
+pyang-ct is an extension to pyang that implements the draft-linowski-netmod-yang-abstract-02 draft (https://trac.tools.ietf.org/id/draft-linowski-netmod-yang-abstract-02.txt).
